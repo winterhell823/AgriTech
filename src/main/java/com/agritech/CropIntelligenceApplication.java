@@ -1,4 +1,4 @@
-package com.cropintel;
+package com.agritech;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
