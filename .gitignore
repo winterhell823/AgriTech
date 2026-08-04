@@ -1,0 +1,32 @@
+# Environment Variables & Secret Keys
+.env
+*.env
+**/.env
+
+# Virtual Environment
+venv/
+env/
+.venv/
+**/venv/
+**/.venv/
+
+# Python Cache & Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local Data Samples & Model Checkpoints
+data_samples/
+checkpoints/
+*.npy
+*.tif
+*.pth
+**/data_samples/
+**/checkpoints/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
