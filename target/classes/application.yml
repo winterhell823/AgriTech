@@ -4,6 +4,25 @@ server:
 spring:
   application:
     name: AgriTech-Backend
+  profiles:
+    active: dev
+
+ai-service:
+  url: http://localhost:8000/api/v1
+  connect-timeout-ms: 5000
+  read-timeout-ms: 30000
+
+aws:
+  s3:
+    bucket: crop-intelligence-rasters-2026
+    region: us-east-1
+
+---
+# Dev Profile (In-Memory H2 for Fast Local Development)
+spring:
+  config:
+    activate:
+      on-profile: dev
   datasource:
     url: jdbc:h2:mem:agritechdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driver-class-name: org.h2.Driver
@@ -17,14 +36,19 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-    show-sql: false
 
-ai-service:
-  url: http://localhost:8000/api/v1
-  connect-timeout-ms: 5000
-  read-timeout-ms: 30000
-
-aws:
-  s3:
-    bucket: crop-intelligence-rasters-2026
-    region: us-east-1
+---
+# Postgres Profile (Real PostgreSQL 16 + PostGIS Spatial Database)
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/agritech_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+    hibernate:
+      ddl-auto: update

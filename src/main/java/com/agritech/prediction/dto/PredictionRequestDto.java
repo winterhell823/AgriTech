@@ -1,5 +1,6 @@
 package com.agritech.prediction.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PredictionRequestDto {
-    private String field_id;
+    
+    @JsonProperty("field_id")
+    private String fieldId;
+    
     private List<Double> bbox;
-    private String date_range;
+    
+    @JsonProperty("date_range")
+    private String dateRange;
+    
+    private String satelliteSceneId;
 }
