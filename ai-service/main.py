@@ -6,12 +6,12 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api.routes import predict, chat, explain
+from app.api.routes import predict, explain, health, phenology, stress
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="AI Microservice for Crop Type Classification, Phenology, Moisture Stress & RAG Assistant"
+    description="AI Microservice for Crop Type Classification, Phenology and Moisture Stress"
 )
 
 app.add_middleware(
@@ -22,10 +22,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include All 3 Production Routers
+# Include All Production Routers
 app.include_router(predict.router, prefix=settings.API_PREFIX, tags=["ML Inference"])
-app.include_router(chat.router, prefix=settings.API_PREFIX, tags=["RAG AI Assistant"])
 app.include_router(explain.router, prefix=settings.API_PREFIX, tags=["Explainability"])
+app.include_router(health.router, prefix=settings.API_PREFIX, tags=["System Health"])
+app.include_router(phenology.router, prefix=settings.API_PREFIX, tags=["Phenology Tracking"])
+app.include_router(stress.router, prefix=settings.API_PREFIX, tags=["Moisture Stress Analysis"])
 
 @app.get("/")
 def root():

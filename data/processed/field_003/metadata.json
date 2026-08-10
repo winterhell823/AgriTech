@@ -1,0 +1,22 @@
+{
+  "field_id": "field_001",
+  "observation_date": "2024-10-28",
+  "bbox": [
+    75.5,
+    30.5,
+    75.55,
+    30.55
+  ],
+  "crs": "EPSG:4326",
+  "scene_id": "S2B_MSIL2A_20241028T053839_R005_T43REP_20241028T080403",
+  "cloud_percentage": 0.004393,
+  "valid_pixel_ratio": 1.0,
+  "bands": [
+    "B02",
+    "B03",
+    "B04",
+    "B08",
+    "B11",
+    "B12"
+  ]
+}

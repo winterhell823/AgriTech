@@ -17,7 +17,7 @@ public class ChatResponseDto {
 
     private Long id;
     private String sessionId;
-    private Long fieldId;
+    private String fieldId;
     private String userMessage;
     private String botResponse;
     private Instant createdAt;

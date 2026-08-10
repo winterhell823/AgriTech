@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crop-intelligence-ai-service"
+version = "1.0.0"
+description = "Prithvi EO-2.0 Foundational Model AI Service for Crop Intelligence"
+authors = [
+    { name = "AgriTech Deep Learning Team" }
+]
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "torch>=2.2.0",
+    "rasterio>=1.3.9",
+    "pandas>=2.2.0",
+    "numpy>=1.26.3",
+    "pydantic-settings>=2.1.0",
+    "huggingface-hub>=0.20.3",
+    "boto3>=1.34.34"
+]

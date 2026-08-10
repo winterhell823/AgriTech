@@ -30,5 +30,5 @@ public class CropRequestDto {
 
     private String satelliteSceneId;
 
-    private Instant classification;
+    private Instant classificationDate;
 }

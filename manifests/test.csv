@@ -1,0 +1,3 @@
+sample_id,field_id,district,year,crop_type,crop_label,phenology_stage,phenology_label,moisture_stress,stress_label,optical_path,sar_path,weather_path,metadata_path
+S_009,field_009,Amritsar,2024,Maize,2,Maturity,3,Mild,1,data/processed/field_009/2024-10-28_optical.tif,data/processed/field_009/2024-10-28_sar.tif,data/processed/field_009/2024-10-28_weather.json,data/processed/field_009/metadata.json
+S_010,field_010,Amritsar,2024,Cotton,3,Germination,0,Severe,3,data/processed/field_010/2024-10-28_optical.tif,data/processed/field_010/2024-10-28_sar.tif,data/processed/field_010/2024-10-28_weather.json,data/processed/field_010/metadata.json

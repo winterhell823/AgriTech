@@ -15,7 +15,7 @@ public class ChatRequestDto {
     @NotBlank(message = "sessionId is required")
     private String sessionId;
 
-    private Long fieldId;
+    private String fieldId;
 
     @NotBlank(message = "message cannot be empty")
     private String message;

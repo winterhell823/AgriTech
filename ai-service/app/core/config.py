@@ -2,7 +2,7 @@
 Central Application Settings & Environment Variables
 """
 import os
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Crop Intelligence AI Microservice"
@@ -22,8 +22,6 @@ class Settings(BaseSettings):
     
     DEFAULT_BBOX: list = [75.5, 30.5, 76.5, 31.5]
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 
 settings = Settings()

@@ -23,7 +23,7 @@ def calculate_stress_feature_importance(ndwi: float = -0.2, ndvi: float = 0.45, 
     contributions = [
         {"feature": "NDWI (Leaf Water Index)", "percentage": round((ndwi_impact / total_score) * 100, 1), "trend": "Declining"},
         {"feature": "Precipitation Deficit", "percentage": round((precip_impact / total_score) * 100, 1), "trend": "-40% below average"},
-        {"feature": "Temperature Anomaly", "percentage": round((temp_impact / total_score) * 100, 1), "trend": "+3.5°C above normal"},
+        {"feature": "Temperature Anomaly", "percentage": round((temp_impact / total_score) * 100, 1), "trend": "+3.5 deg C above normal"},
         {"feature": "NDVI (Vegetation Vigor)", "percentage": round((ndvi_impact / total_score) * 100, 1), "trend": "Moderate Vigor"}
     ]
     

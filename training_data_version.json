@@ -1,0 +1,38 @@
+{
+  "model_version": "1.0.0",
+  "huggingface_repo": "kratika24076536835854/fine-tuned-prithvi-crop-intelligence",
+  "base_model": "NASA-IMPACT/Prithvi-EO-2.0-300M",
+  "data_split_version": "2026.1",
+  "checksums": {
+    "weights": {
+      "file": "fine_tuned_prithvi_multimodal.pth",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\ai-service\\checkpoints\\fine_tuned_prithvi_multimodal.pth",
+      "sha256": "eef7c986767b8a5334aaa9bec7a911a6c73e5852bcb3835f5cb6f7c596699d17"
+    },
+    "model_config": {
+      "file": "model_config.yaml",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\ai-service\\app\\models\\configs\\model_config.yaml",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preprocessing_config": {
+      "file": "preprocessing_config.yaml",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\ai-service\\app\\models\\configs\\preprocessing_config.yaml",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "label_mappings": {
+      "file": "label_mappings.json",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\ai-service\\app\\models\\configs\\label_mappings.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "metrics": {
+      "file": "metrics.json",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\metrics.json",
+      "sha256": "2824468a2bb884f8024de6397b435e37d7acf08fb5a1e81dbced371a8c91a7d3"
+    },
+    "model_card": {
+      "file": "model_card.md",
+      "path": "C:\\Users\\Lenovo\\Downloads\\AgriTech\\model_card.md",
+      "sha256": "dc80e52d949c1a21024a685ae62ae622446a9c3ce9d775499b1eaf37a3c01113"
+    }
+  }
+}

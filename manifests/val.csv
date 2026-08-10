@@ -1,0 +1,3 @@
+sample_id,field_id,district,year,crop_type,crop_label,phenology_stage,phenology_label,moisture_stress,stress_label,optical_path,sar_path,weather_path,metadata_path
+S_007,field_007,Jalandhar,2024,Wheat,1,Flowering,2,Moderate,2,data/processed/field_007/2024-10-28_optical.tif,data/processed/field_007/2024-10-28_sar.tif,data/processed/field_007/2024-10-28_weather.json,data/processed/field_007/metadata.json
+S_008,field_008,Jalandhar,2024,Rice,0,Vegetative,1,Healthy,0,data/processed/field_008/2024-10-28_optical.tif,data/processed/field_008/2024-10-28_sar.tif,data/processed/field_008/2024-10-28_weather.json,data/processed/field_008/metadata.json

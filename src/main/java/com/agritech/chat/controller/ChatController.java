@@ -28,7 +28,7 @@ public class ChatController {
     }
 
     @GetMapping("/field/{fieldId}")
-    public ResponseEntity<List<ChatResponseDto>> getByField(@PathVariable Long fieldId) {
+    public ResponseEntity<List<ChatResponseDto>> getByField(@PathVariable String fieldId) {
         return ResponseEntity.ok(chatService.getHistoryByField(fieldId));
     }
 }
