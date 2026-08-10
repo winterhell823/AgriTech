@@ -13,8 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FieldRequestDto {
 
-    @NotNull(message = "ownerId is required")
-    private Long ownerId;
+    @NotBlank(message = "ownerId is required")
+    private String ownerId;
 
     @NotBlank(message = "name is required")
     private String name;

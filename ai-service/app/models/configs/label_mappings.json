@@ -1,0 +1,23 @@
+{
+  "crop_type": {
+    "0": "Rice",
+    "1": "Wheat",
+    "2": "Maize",
+    "3": "Cotton",
+    "4": "Sugarcane",
+    "5": "Other"
+  },
+  "phenology_stage": {
+    "0": "Germination",
+    "1": "Vegetative",
+    "2": "Flowering",
+    "3": "Maturity",
+    "4": "Harvest"
+  },
+  "moisture_stress": {
+    "0": "Healthy",
+    "1": "Mild",
+    "2": "Moderate",
+    "3": "Severe"
+  }
+}

@@ -34,7 +34,7 @@ public class FieldController {
     }
 
     @GetMapping("/owner/{ownerId}")
-    public ResponseEntity<List<FieldResponseDto>> getByOwner(@PathVariable Long ownerId) {
+    public ResponseEntity<List<FieldResponseDto>> getByOwner(@PathVariable String ownerId) {
         return ResponseEntity.ok(fieldService.getByOwner(ownerId));
     }
 

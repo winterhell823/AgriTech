@@ -9,5 +9,5 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
 
     List<Chat> findBySessionIdOrderByCreatedAtAsc(String sessionId);
 
-    List<Chat> findByFieldIdOrderByCreatedAtDesc(Long fieldId);
+    List<Chat> findByFieldIdOrderByCreatedAtDesc(String fieldId);
 }

@@ -1,19 +1,26 @@
 package com.agritech.prediction.dto;
 
-import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PredictionRequestDto {
-
-    @NotNull(message = "fieldId is required")
-    private Long fieldId;
-
-    private String satelliteSceneId; // optional — if omitted, AI service picks the latest available scene
+    
+    @JsonProperty("field_id")
+    private String fieldId;
+    
+    private List<Double> bbox;
+    
+    @JsonProperty("date_range")
+    private String dateRange;
+    
+    private String satelliteSceneId;
 }

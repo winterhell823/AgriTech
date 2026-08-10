@@ -16,7 +16,7 @@ import java.time.Instant;
 public class FieldResponseDto {
 
     private Long id;
-    private Long ownerId;
+    private String ownerId;
     private String name;
     private Double areaHectares;
     private String boundaryGeoJson;

@@ -12,7 +12,7 @@ public interface ReportService {
 
     ReportResponseDto getById(Long id);
 
-    List<ReportResponseDto> getByField(Long fieldId);
+    List<ReportResponseDto> getByField(String fieldId);
 
     /** Called once the report file has actually been generated and uploaded to S3. */
     ReportResponseDto markCompleted(Long id, String fileUrl);

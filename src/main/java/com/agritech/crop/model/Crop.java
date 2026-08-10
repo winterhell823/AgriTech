@@ -34,6 +34,9 @@ public class Crop {
     @Column(name = "satellite_scene_id")
     private String satelliteSceneId;
 
+    @Column(name = "classification_date")
+    private Instant classificationDate;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
@@ -42,7 +45,6 @@ public class Crop {
         this.createdAt = Instant.now();
         if (this.classificationDate == null) {
             this.classificationDate = Instant.now();
-
         }
     }
 }

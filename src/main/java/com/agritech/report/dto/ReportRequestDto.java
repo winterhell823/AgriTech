@@ -16,7 +16,7 @@ import java.time.Instant;
 public class ReportRequestDto {
 
     @NotNull(message = "fieldId is required")
-    private Long fieldId;
+    private String fieldId;
 
     @NotNull(message = "reportType is required")
     private ReportType reportType;

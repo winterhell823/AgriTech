@@ -18,7 +18,7 @@ import java.time.Instant;
 public class ReportResponseDto {
 
     private Long id;
-    private Long fieldId;
+    private String fieldId;
     private ReportType reportType;
     private ReportStatus status;
     private String fileUrl;

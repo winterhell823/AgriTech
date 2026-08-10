@@ -1,0 +1,33 @@
+{
+  "status": "SUCCESS",
+  "splits": {
+    "train": {
+      "total_samples": 6,
+      "unique_fields": 6,
+      "class_distribution": {
+        "Wheat": 1,
+        "Rice": 1,
+        "Maize": 1,
+        "Cotton": 1,
+        "Sugarcane": 1,
+        "Other": 1
+      }
+    },
+    "val": {
+      "total_samples": 2,
+      "unique_fields": 2,
+      "class_distribution": {
+        "Wheat": 1,
+        "Rice": 1
+      }
+    },
+    "test": {
+      "total_samples": 2,
+      "unique_fields": 2,
+      "class_distribution": {
+        "Maize": 1,
+        "Cotton": 1
+      }
+    }
+  }
+}

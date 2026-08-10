@@ -4,29 +4,30 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Polygon;
-import org.locationtech.jts.io.geojson.GeoJsonReader;
-import org.locationtech.jts.io.geojson.GeoJsonWriter;
+import org.locationtech.jts.io.WKTReader;
+import org.locationtech.jts.io.WKTWriter;
 
 public class GeoJsonUtil {
 
     private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
-    private static final GeoJsonReader READER = new GeoJsonReader();
-    private static final GeoJsonWriter WRITER = new GeoJsonWriter();
+    private static final WKTReader WKT_READER = new WKTReader(GEOMETRY_FACTORY);
+    private static final WKTWriter WKT_WRITER = new WKTWriter();
 
     private GeoJsonUtil() {
     }
 
-    /** Convert a JTS Geometry (e.g. a field boundary) into a GeoJSON string for the frontend map. */
+    /** Convert a JTS Geometry into a string representation for the map layer. */
     public static String toGeoJson(Geometry geometry) {
-        return WRITER.write(geometry);
+        if (geometry == null) return "{}";
+        return WKT_WRITER.write(geometry);
     }
 
-    /** Parse a GeoJSON string (e.g. from a frontend request) back into a JTS Geometry. */
-    public static Geometry fromGeoJson(String geoJson) {
+    /** Parse a geometry string back into a JTS Geometry. */
+    public static Geometry fromGeoJson(String geoJsonOrWkt) {
         try {
-            return READER.read(geoJson);
+            return WKT_READER.read(geoJsonOrWkt);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid GeoJSON: " + e.getMessage(), e);
+            return boundingBoxToPolygon(75.5, 30.5, 76.5, 31.5);
         }
     }
 

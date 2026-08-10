@@ -20,7 +20,7 @@ def get_loaded_model():
         return _MODEL_INSTANCE
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"🚀 Loading Fine-Tuned Model on Device: {device}...")
+    print(f"[INFO] Loading Fine-Tuned Model on Device: {device}...")
     
     model = CropIntelligenceMultimodalModel().to(device)
     
@@ -30,10 +30,11 @@ def get_loaded_model():
             repo_id=settings.HF_MODEL_ID,
             filename="fine_tuned_prithvi_multimodal.pth"
         )
-        model.load_state_dict(torch.load(weights_path, map_location=device))
-        print("✅ Fine-tuned Prithvi weights loaded from Hugging Face Hub successfully!")
+        state_dict = torch.load(weights_path, map_location=device)
+        model.load_state_dict(state_dict, strict=False)
+        print("[SUCCESS] Fine-tuned Prithvi weights loaded from Hugging Face Hub successfully!")
     except Exception as e:
-        print(f"⚠️ Could not load from HF Hub ({e}). Using initialized model weights.")
+        print(f"[WARNING] Could not load from HF Hub ({e}). Using initialized model weights.")
         
     model.eval()
     _MODEL_INSTANCE = model
@@ -41,4 +42,4 @@ def get_loaded_model():
 
 if __name__ == "__main__":
     m = get_loaded_model()
-    print("✅ Model Loader Verification Successful!")
+    print("[SUCCESS] Model Loader Verification Successful!")

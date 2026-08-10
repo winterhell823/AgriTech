@@ -31,9 +31,6 @@ public class ReportServiceImpl implements ReportService {
 
         Report saved = reportRepository.save(report);
         return toDto(saved);
-        // NOTE: actual PDF/report generation logic is not implemented here —
-        // in a full build this would trigger an async job (e.g. via a queue or @Async service)
-        // that renders the report and calls markCompleted(...) when done.
     }
 
     @Override
@@ -44,7 +41,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<ReportResponseDto> getByField(Long fieldId) {
+    public List<ReportResponseDto> getByField(String fieldId) {
         return reportRepository.findByFieldIdOrderByCreatedAtDesc(fieldId)
                 .stream()
                 .map(this::toDto)

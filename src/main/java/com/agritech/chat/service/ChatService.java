@@ -11,5 +11,5 @@ public interface ChatService {
 
     List<ChatResponseDto> getHistoryBySession(String sessionId);
 
-    List<ChatResponseDto> getHistoryByField(Long fieldId);
+    List<ChatResponseDto> getHistoryByField(String fieldId);
 }

@@ -1,0 +1,22 @@
+# Real PostgreSQL 16 + PostGIS Spatial Database Configuration
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/agritech_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+ai-service:
+  url: http://localhost:8000/api/v1
+  connect-timeout-ms: 5000
+  read-timeout-ms: 30000
+
+aws:
+  s3:
+    bucket: crop-intelligence-rasters-2026
+    region: us-east-1

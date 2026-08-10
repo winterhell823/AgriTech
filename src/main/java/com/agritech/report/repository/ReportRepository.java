@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
-    List<Report> findByFieldIdOrderByCreatedAtDesc(Long fieldId);
+    List<Report> findByFieldIdOrderByCreatedAtDesc(String fieldId);
 }

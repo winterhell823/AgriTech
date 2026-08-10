@@ -13,7 +13,7 @@ public interface FieldService {
 
     List<FieldResponseDto> getAll();
 
-    List<FieldResponseDto> getByOwner(Long ownerId);
+    List<FieldResponseDto> getByOwner(String ownerId);
 
     FieldResponseDto update(Long id, FieldRequestDto requestDto);
 

@@ -1,0 +1,8 @@
+{
+  "field_id": "field_001",
+  "observation_date": "2024-10-28",
+  "temperature_celsius": 31.5,
+  "rainfall_14day_mm": 12.4,
+  "humidity_percent": 65.0,
+  "wind_speed_ms": 3.2
+}

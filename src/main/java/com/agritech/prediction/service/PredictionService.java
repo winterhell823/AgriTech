@@ -6,12 +6,9 @@ import com.agritech.prediction.dto.PredictionResponseDto;
 import java.util.List;
 
 public interface PredictionService {
-
-    /** Calls the Python AI service, persists a Prediction record, and fans results
-     *  out into the crop and phenology modules (and stress, once that module exists). */
+    PredictionResponseDto getPredictionForField(String fieldId);
+    PredictionResponseDto processPrediction(PredictionRequestDto requestDto);
     PredictionResponseDto runPrediction(PredictionRequestDto requestDto);
-
     PredictionResponseDto getById(Long id);
-
-    List<PredictionResponseDto> getByField(Long fieldId);
+    List<PredictionResponseDto> getByField(String fieldId);
 }

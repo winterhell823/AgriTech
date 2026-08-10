@@ -17,7 +17,7 @@ from app.core.config import settings
 
 def get_s3_client():
     if not settings.AWS_ACCESS_KEY_ID or not settings.AWS_SECRET_ACCESS_KEY:
-        raise ValueError("❌ AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be set in .env!")
+        raise ValueError("[ERROR] AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be set in .env!")
         
     return boto3.client(
         "s3",
@@ -39,7 +39,7 @@ def upload_raster_to_s3(local_filepath: str, s3_key: str = None) -> str:
     
     try:
         s3_client = get_s3_client()
-        print(f"☁️ Uploading {local_filepath} to AWS S3 bucket '{bucket}'...")
+        print(f"[INFO] Uploading {local_filepath} to AWS S3 bucket '{bucket}'...")
         s3_client.upload_file(
             local_filepath,
             bucket,
@@ -47,10 +47,10 @@ def upload_raster_to_s3(local_filepath: str, s3_key: str = None) -> str:
             ExtraArgs={'ContentType': 'image/tiff'}
         )
         url = f"https://{bucket}.s3.{settings.AWS_REGION}.amazonaws.com/{s3_key}"
-        print(f"✅ Live S3 Raster URL: {url}")
+        print(f"[SUCCESS] Live S3 Raster URL: {url}")
         return url
     except Exception as e:
-        print(f"❌ Failed to upload raster to AWS S3: {e}")
+        print(f"[ERROR] Failed to upload raster to AWS S3: {e}")
         raise e
 
 if __name__ == "__main__":

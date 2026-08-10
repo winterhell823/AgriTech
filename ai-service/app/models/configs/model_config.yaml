@@ -1,0 +1,19 @@
+model:
+  name: "Prithvi-EO2-Crop-Multimodal"
+  backbone: "ibm-nasa-geospatial/Prithvi-100M"
+  optical_channels: 6
+  sar_channels: 3
+  weather_features: 4
+  embedding_dim: 768
+  fusion_dim: 256
+
+heads:
+  crop_type:
+    num_classes: 6
+    classes: ["Rice", "Wheat", "Maize", "Cotton", "Sugarcane", "Other"]
+  phenology_stage:
+    num_classes: 5
+    classes: ["Germination", "Vegetative", "Flowering", "Maturity", "Harvest"]
+  moisture_stress:
+    num_classes: 4
+    classes: ["Healthy", "Mild", "Moderate", "Severe"]

@@ -59,7 +59,7 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public List<ChatResponseDto> getHistoryByField(Long fieldId) {
+    public List<ChatResponseDto> getHistoryByField(String fieldId) {
         return chatRepository.findByFieldIdOrderByCreatedAtDesc(fieldId)
                 .stream()
                 .map(this::toDto)

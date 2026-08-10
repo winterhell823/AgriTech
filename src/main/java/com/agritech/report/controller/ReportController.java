@@ -29,7 +29,7 @@ public class ReportController {
     }
 
     @GetMapping("/field/{fieldId}")
-    public ResponseEntity<List<ReportResponseDto>> getByField(@PathVariable Long fieldId) {
+    public ResponseEntity<List<ReportResponseDto>> getByField(@PathVariable String fieldId) {
         return ResponseEntity.ok(reportService.getByField(fieldId));
     }
 

@@ -50,7 +50,7 @@ public class FieldServiceImpl implements FieldService {
     }
 
     @Override
-    public List<FieldResponseDto> getByOwner(Long ownerId) {
+    public List<FieldResponseDto> getByOwner(String ownerId) {
         return fieldRepository.findByOwnerId(ownerId)
                 .stream()
                 .map(this::toDto)

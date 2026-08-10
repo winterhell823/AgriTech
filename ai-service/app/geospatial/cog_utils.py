@@ -32,5 +32,5 @@ def save_prediction_as_geotiff(prediction_grid: np.ndarray, bbox: list, output_p
     ) as dst:
         dst.write(grid_uint8, 1)
         
-    print(f"🗺️ Saved prediction raster to GeoTIFF: {output_path}")
+    print(f"[INFO] Saved prediction raster to GeoTIFF: {output_path}")
     return output_path
