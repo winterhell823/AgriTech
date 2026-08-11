@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     AWS_S3_BUCKET: str = "crop-intelligence-rasters"
     
     DEFAULT_BBOX: list = [75.5, 30.5, 76.5, 31.5]
+    SECRET_API_KEY: str = "agritech-ai-secret-key-2026"
+    CORS_ORIGINS: list = ["http://localhost:3000", "http://localhost:8080", "http://127.0.0.1:3000"]
     
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 
