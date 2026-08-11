@@ -4,6 +4,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Button,
   IconButton,
   InputAdornment,
   Menu,
@@ -14,11 +15,12 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-export function Navbar({ onMenuClick, onSearch }) {
+export function Navbar({ onMenuClick, onSearch, onHomeClick }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [query, setQuery] = useState('');
 
@@ -27,52 +29,89 @@ export function Navbar({ onMenuClick, onSearch }) {
   };
 
   return (
-    <AppBar position="fixed" color="default" sx={{ bgcolor: 'rgba(245, 247, 244, 0.94)', backdropFilter: 'blur(10px)' }}>
-      <Toolbar sx={{ minHeight: 72, gap: 2 }}>
-        <IconButton edge="start" onClick={onMenuClick} color="inherit" aria-label="toggle sidebar">
-          <MenuIcon />
-        </IconButton>
+    <AppBar
+      position="fixed"
+      color="default"
+      sx={{
+        bgcolor: 'rgba(245, 247, 244, 0.98)',
+        backdropFilter: 'blur(14px)',
+        borderBottom: '1px solid rgba(15, 42, 20, 0.08)',
+        boxShadow: 'none',
+        width: '100%',
+      }}
+    >
+      <Toolbar
+        sx={{
+          minHeight: 72,
+          px: { xs: 2, md: 3.5 },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 2,
+          boxSizing: 'border-box',
+          width: '100%',
+        }}
+      >
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ minWidth: 0 }}>
+          <IconButton edge="start" onClick={onMenuClick} color="inherit" aria-label="toggle sidebar">
+            <MenuIcon />
+          </IconButton>
 
-        <Stack spacing={0} sx={{ minWidth: 0 }}>
-          <Typography variant="subtitle1" sx={{ lineHeight: 1.1 }}>
-            Crop Intelligence
-          </Typography>
-          <Typography variant="caption" color="text.secondary">
-            AI-Powered Agricultural Intelligence
-          </Typography>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography variant="subtitle1" sx={{ lineHeight: 1.1 }}>
+              Crop Intelligence
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              Geospatial field health and moisture monitoring
+            </Typography>
+          </Box>
+
+          <Button
+            startIcon={<HomeOutlinedIcon />}
+            onClick={onHomeClick}
+            sx={{ textTransform: 'none', color: 'text.primary', display: { xs: 'none', sm: 'inline-flex' } }}
+          >
+            Home
+          </Button>
         </Stack>
 
-        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ flex: 1, minWidth: 0, display: 'flex', justifyContent: 'center' }}>
+          <TextField
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                submitSearch();
+              }
+            }}
+            placeholder="Search field or location"
+            sx={{ width: 'min(360px, 35vw)', maxWidth: 360, minWidth: 180 }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon fontSize="small" />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Box>
 
-        <TextField
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              submitSearch();
-            }
-          }}
-          placeholder="Search field or location"
-          sx={{ width: { xs: 160, sm: 260, md: 320 } }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon fontSize="small" />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ minWidth: 0 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>
+            Updated now
+          </Typography>
 
-        <IconButton color="inherit">
-          <Badge color="error" variant="dot">
-            <NotificationsNoneIcon />
-          </Badge>
-        </IconButton>
+          <IconButton color="inherit">
+            <Badge color="error" variant="dot">
+              <NotificationsNoneIcon />
+            </Badge>
+          </IconButton>
 
-        <IconButton onClick={(event) => setAnchorEl(event.currentTarget)} color="inherit">
-          <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main' }}>A</Avatar>
-          <ArrowDropDownIcon fontSize="small" />
-        </IconButton>
+          <IconButton onClick={(event) => setAnchorEl(event.currentTarget)} color="inherit">
+            <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main' }}>A</Avatar>
+            <ArrowDropDownIcon fontSize="small" />
+          </IconButton>
+        </Stack>
 
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
           <MenuItem onClick={() => setAnchorEl(null)}>Profile</MenuItem>

@@ -8,8 +8,8 @@ export function TimeSlider({ dates, value, onChange }) {
   );
 
   return (
-    <Box sx={{ px: 2, py: 1.25, borderTop: '1px solid rgba(22, 48, 37, 0.08)', bgcolor: 'rgba(255,255,255,0.92)' }}>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
+    <Box sx={{ px: { xs: 2, md: 3 }, py: 1.25, borderTop: '1px solid rgba(22, 48, 37, 0.08)', bgcolor: 'rgba(255,255,255,0.92)' }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} alignItems={{ xs: 'flex-start', sm: 'center' }} justifyContent="space-between" sx={{ mb: 1, gap: 1 }}>
         <Typography variant="subtitle2">Historical Timeline</Typography>
         <Chip size="small" label={formatDateLabel(value)} />
       </Stack>

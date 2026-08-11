@@ -76,8 +76,8 @@ export function GISMap({ fields, selectedFieldId, onSelectField, selectedLayer, 
   };
 
   return (
-    <Paper className="gis-map-shell" sx={{ position: 'relative', height: { xs: 520, md: 760 }, overflow: 'hidden' }}>
-      <Box sx={{ position: 'absolute', inset: 0 }}>
+    <Paper className="gis-map-shell" sx={{ position: 'relative', height: { xs: 520, md: 720 }, overflow: 'hidden', borderRadius: 3 }}>
+      <Box sx={{ position: 'absolute', inset: 0, minHeight: 0 }}>
         <MapContainer
           center={baseCenter}
           zoom={13}
@@ -131,9 +131,9 @@ export function GISMap({ fields, selectedFieldId, onSelectField, selectedLayer, 
         onFullscreen={handleFullscreen}
       />
 
-      <Box sx={{ position: 'absolute', left: 16, top: 16, zIndex: 500, maxWidth: 280 }}>
+      <Box sx={{ position: 'absolute', left: 16, top: 16, zIndex: 500, maxWidth: 280, width: 'calc(100% - 32px)' }}>
         <Paper sx={{ p: 1.5, bgcolor: 'rgba(255,255,255,0.95)' }}>
-          <Typography variant="subtitle2" gutterBottom>
+          <Typography variant="subtitle2" gutterBottom noWrap>
             Active Layer: {layers.find((layer) => layer.id === selectedLayer)?.label ?? 'Satellite'}
           </Typography>
           <Typography variant="caption" color="text.secondary">
@@ -142,7 +142,7 @@ export function GISMap({ fields, selectedFieldId, onSelectField, selectedLayer, 
         </Paper>
       </Box>
 
-      <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 500 }}>
+      <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 500, px: 2, pb: 2 }}>
         <TimeSlider dates={dates} value={selectedDate} onChange={onSelectedDateChange} />
       </Box>
     </Paper>

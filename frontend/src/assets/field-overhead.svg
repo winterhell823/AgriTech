@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#405c3d" />
+      <stop offset="100%" stop-color="#2f4d33" />
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b7b4b" />
+      <stop offset="100%" stop-color="#3f6a3f" />
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b8657" />
+      <stop offset="100%" stop-color="#4f6f3f" />
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22341f" />
+      <stop offset="100%" stop-color="#1a2a18" />
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#sky)" />
+
+  <g>
+    <rect x="64" y="72" width="246" height="278" rx="20" fill="url(#g3)" />
+    <rect x="334" y="56" width="372" height="220" rx="20" fill="url(#g1)" />
+    <rect x="68" y="372" width="308" height="196" rx="18" fill="url(#g2)" />
+    <rect x="420" y="312" width="362" height="246" rx="18" fill="url(#g1)" />
+    <rect x="634" y="38" width="196" height="168" rx="18" fill="url(#g2)" />
+    <rect x="704" y="246" width="140" height="236" rx="18" fill="url(#g3)" />
+  </g>
+
+  <g stroke="#aac78c" stroke-width="4" fill="none" opacity="0.58">
+    <path d="M72 76 L72 348" />
+    <path d="M322 76 L322 348" />
+    <path d="M68 102 L314 102" />
+    <path d="M68 184 L314 184" />
+    <path d="M68 264 L314 264" />
+    <path d="M68 334 L314 334" />
+    <path d="M342 62 L706 62" />
+    <path d="M342 112 L706 112" />
+    <path d="M342 162 L706 162" />
+    <path d="M342 212 L706 212" />
+    <path d="M426 316 L426 552" />
+    <path d="M506 316 L506 552" />
+    <path d="M586 316 L586 552" />
+    <path d="M666 316 L666 552" />
+    <path d="M744 252 L744 492" />
+  </g>
+
+  <g opacity="0.88">
+    <path d="M78 92 L125 80 L140 92 L120 102 Z" fill="#d8e7b7" opacity="0.22" />
+    <path d="M378 132 L440 110 L450 122 L392 144 Z" fill="#d8e7b7" opacity="0.22" />
+    <path d="M656 418 L722 398 L732 410 L668 430 Z" fill="#d8e7b7" opacity="0.22" />
+  </g>
+
+  <g fill="#f4e3a0" opacity="0.72">
+    <circle cx="182" cy="126" r="7" />
+    <circle cx="490" cy="156" r="6" />
+    <circle cx="218" cy="414" r="8" />
+    <circle cx="690" cy="302" r="7" />
+    <circle cx="760" cy="496" r="6" />
+  </g>
+</svg>

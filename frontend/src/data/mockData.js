@@ -336,17 +336,6 @@ export const getWeatherData = (date = timelineOptions.at(-1).value) => {
 
 export const getMapLayers = () => mapLayers;
 
-export const getChatResponse = (message) => {
-  const lower = message.toLowerCase();
-  if (lower.includes('irrigation')) {
-    return 'Irrigation priority is driven by recent rainfall deficit, elevated temperature, and declining NDWI. The system recommends field inspection before action.';
-  }
-  if (lower.includes('wheat')) {
-    return 'Wheat fields are currently trending toward flowering and grain fill. Review the moisture stress overlay for fields 1024 and 1029.';
-  }
-  return 'The dashboard explains validated crop, stress, and phenology outputs from the backend. Use the map and field panel to inspect evidence and recommendations.';
-};
-
 export const getFeatureImportancePlaceholder = () => [
   { feature: 'NDWI', importance: 0.34 },
   { feature: 'NDVI', importance: 0.28 },

@@ -9,7 +9,6 @@ export function DashboardProvider({ children }) {
   const [selectedFieldId, setSelectedFieldId] = useState('1024');
   const [selectedCrop, setSelectedCrop] = useState('All');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
 
   const value = useMemo(
     () => ({
@@ -23,12 +22,10 @@ export function DashboardProvider({ children }) {
       setSelectedCrop,
       sidebarOpen,
       setSidebarOpen,
-      chatOpen,
-      setChatOpen,
       timelineOptions,
       mapLayers,
     }),
-    [selectedDate, selectedLayer, selectedFieldId, selectedCrop, sidebarOpen, chatOpen],
+    [selectedDate, selectedLayer, selectedFieldId, selectedCrop, sidebarOpen],
   );
 
   return <DashboardContext.Provider value={value}>{children}</DashboardContext.Provider>;

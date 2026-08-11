@@ -127,7 +127,7 @@ export function FieldMonitoringPage() {
             </TableHead>
             <TableBody>
               {paginatedFields.map((field) => (
-                <TableRow key={field.id} hover sx={{ cursor: 'pointer' }} onClick={() => navigate(`/field/${field.id}`)}>
+                <TableRow key={field.id} hover sx={{ cursor: 'pointer' }} onClick={() => navigate(`/fields/${field.id}`)}>
                   <TableCell>{field.id}</TableCell>
                   <TableCell>{field.crop}</TableCell>
                   <TableCell>{field.stage}</TableCell>

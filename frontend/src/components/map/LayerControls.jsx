@@ -16,8 +16,9 @@ export function LayerControls({ layers, selectedLayer, onLayerChange, onZoomIn, 
         top: 16,
         right: 16,
         zIndex: 600,
-        width: 260,
-        p: 1.5,
+        width: { xs: 'calc(100% - 32px)', sm: 280 },
+        maxWidth: 280,
+        p: 1.25,
         bgcolor: 'rgba(255, 255, 255, 0.95)',
       }}
     >
@@ -42,9 +43,13 @@ export function LayerControls({ layers, selectedLayer, onLayerChange, onZoomIn, 
         <Button onClick={onZoomIn} startIcon={<ZoomInOutlinedIcon />}>In</Button>
         <Button onClick={onZoomOut} startIcon={<ZoomOutOutlinedIcon />}>Out</Button>
       </ButtonGroup>
-      <Stack direction="row" spacing={1}>
-        <Button onClick={onLocate} startIcon={<MyLocationOutlinedIcon />} fullWidth size="small">Locate</Button>
-        <Button onClick={onReset} startIcon={<RestartAltOutlinedIcon />} fullWidth size="small">Reset</Button>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+        <Button onClick={onLocate} startIcon={<MyLocationOutlinedIcon />} fullWidth size="small">
+          Locate
+        </Button>
+        <Button onClick={onReset} startIcon={<RestartAltOutlinedIcon />} fullWidth size="small">
+          Reset
+        </Button>
         <IconButton onClick={onFullscreen} size="small" sx={{ border: '1px solid rgba(22,48,37,0.15)' }}>
           <FullscreenOutlinedIcon fontSize="small" />
         </IconButton>

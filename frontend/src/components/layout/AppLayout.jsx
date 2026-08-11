@@ -13,7 +13,7 @@ export function AppLayout() {
   const { setSidebarOpen, setSelectedFieldId } = useDashboard();
   const [collapsed, setCollapsed] = useState(false);
 
-  const drawerWidth = useMemo(() => (collapsed ? 88 : 270), [collapsed]);
+  const drawerWidth = useMemo(() => (collapsed ? 88 : 250), [collapsed]);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -25,15 +25,15 @@ export function AppLayout() {
 
     if (fieldMatch) {
       setSelectedFieldId(fieldMatch[0]);
-      navigate(`/field/${fieldMatch[0]}`);
+      navigate(`/fields/${fieldMatch[0]}`);
       return;
     }
 
-    navigate('/field-monitoring');
+    navigate('/fields');
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', bgcolor: 'background.default' }}>
+    <Box sx={{ minHeight: '100vh', width: '100%', overflowX: 'hidden', bgcolor: 'background.default' }}>
       <Navbar
         onMenuClick={() => {
           if (isDesktop) {
@@ -43,21 +43,25 @@ export function AppLayout() {
           }
         }}
         onSearch={handleSearch}
+        onHomeClick={() => navigate('/')}
       />
       <Sidebar collapsed={collapsed} drawerWidth={drawerWidth} onNavigate={() => !isDesktop && setSidebarOpen(false)} />
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          pt: 8.5,
-          px: { xs: 1.5, md: 2.5 },
+          minWidth: 0,
+          width: '100%',
+          maxWidth: '100%',
+          pt: 9,
+          px: { xs: 2, md: 4 },
           pb: 3,
           ml: { xs: 0, md: `${drawerWidth}px` },
           transition: 'margin-left 180ms ease',
         }}
       >
         <Toolbar sx={{ minHeight: 16, p: 0 }} />
-        <Box sx={{ maxWidth: '100%', mx: 'auto' }}>
+        <Box sx={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
           <Outlet key={location.pathname} />
         </Box>
       </Box>

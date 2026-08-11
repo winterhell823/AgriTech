@@ -8,7 +8,6 @@ import { getWeatherSummary } from '../services/weatherService';
 import { PageHeader } from '../components/common/PageHeader';
 import { SectionCard } from '../components/common/SectionCard';
 import { EmptyState } from '../components/common/EmptyState';
-import { getFeatureImportancePlaceholder } from '../data/mockData';
 import { formatDateLabel, formatDecimal, formatPercent, getPriorityColor } from '../utils/formatters';
 import { FieldTrendChart } from '../components/charts/FieldTrendChart';
 
@@ -62,22 +61,12 @@ export function FieldDetailsPage() {
               </Stack>
             </SectionCard>
 
-            <SectionCard title="Explainability" subtitle="Key contributing signals and feature importance placeholder">
-              <Stack spacing={1} sx={{ mb: 2 }}>
+            <SectionCard title="Supporting Evidence" subtitle="Signals that support the field summary">
+              <Stack spacing={1} sx={{ mb: 1 }}>
                 {field.evidence.map((signal) => (
                   <Chip key={signal} label={signal} variant="outlined" />
                 ))}
               </Stack>
-              <Paper sx={{ p: 2, bgcolor: 'rgba(47,107,63,0.04)' }}>
-                {getFeatureImportancePlaceholder().map((item) => (
-                  <Stack key={item.feature} direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
-                    <Typography variant="caption" sx={{ minWidth: 110 }}>{item.feature}</Typography>
-                    <Box sx={{ flexGrow: 1, height: 10, bgcolor: 'rgba(47,107,63,0.12)', borderRadius: 8 }}>
-                      <Box sx={{ width: `${item.importance * 100}%`, height: '100%', bgcolor: 'primary.main', borderRadius: 8 }} />
-                    </Box>
-                  </Stack>
-                ))}
-              </Paper>
             </SectionCard>
           </Stack>
         </Grid>

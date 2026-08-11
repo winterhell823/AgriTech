@@ -1,0 +1,17 @@
+<svg width="720" height="480" viewBox="0 0 720 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="480" rx="32" fill="#E9F1EA"/>
+  <rect x="40" y="60" width="640" height="320" rx="24" fill="#D4E3D0"/>
+  <path d="M50 120H690" stroke="#A9C8A6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M50 220H690" stroke="#A9C8A6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M180 60V380" stroke="#A9C8A6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M360 60V380" stroke="#A9C8A6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M520 60V380" stroke="#A9C8A6" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="560" cy="120" r="42" fill="#F6C76A"/>
+  <path d="M104 340C114 318 152 298 169 344C195 404 228 392 256 348C290 298 328 314 356 342" stroke="#79A676" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="146" cy="364" r="20" fill="#7AA17E"/>
+  <circle cx="232" cy="332" r="16" fill="#7AA17E"/>
+  <path d="M70 390H240" stroke="#AEC9A8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M430 400H620" stroke="#AEC9A8" stroke-width="18" stroke-linecap="round"/>
+  <rect x="86" y="72" width="160" height="80" rx="18" fill="#ffffff" opacity="0.9"/>
+  <text x="166" y="118" text-anchor="middle" fill="#2F6B3F" font-family="Inter, sans-serif" font-size="24" font-weight="700">Field IQ</text>
+</svg>
