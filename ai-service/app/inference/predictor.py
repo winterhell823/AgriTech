@@ -10,8 +10,7 @@ import numpy as np
 from app.inference.model_loader import get_loaded_model
 from app.inference.postprocessing import postprocess_predictions
 from app.preprocessing.optical_preprocessing import normalize_6band_tensor
-from app.preprocessing.weather_preprocessing import fetch_live_weather, extract_weather_feature_vector
-from app.geospatial.vector_utils import get_centroid_from_bbox
+from app.preprocessing.weather_preprocessing import fetch_grid_weather
 
 def run_field_prediction(field_id: str, bbox: list, optical_np: np.ndarray = None, sar_np: np.ndarray = None) -> dict:
     """
@@ -27,12 +26,7 @@ def run_field_prediction(field_id: str, bbox: list, optical_np: np.ndarray = Non
     if sar_np is None or sar_np.shape != (3, 512, 512):
         sar_np = np.zeros((3, 512, 512), dtype=np.float32)
 
-    center_lat, center_lon = get_centroid_from_bbox(bbox)
-    try:
-        weather_json = fetch_live_weather(center_lat, center_lon)
-        weather_vec = extract_weather_feature_vector(weather_json)
-    except Exception:
-        weather_vec = np.array([0.5, 0.1, 0.5, 0.2], dtype=np.float32)
+    weather_vec = fetch_grid_weather(bbox)
 
     opt_tensor = torch.tensor(optical_np, dtype=torch.float32).unsqueeze(0).to(device)
     sar_tensor = torch.tensor(sar_np, dtype=torch.float32).unsqueeze(0).to(device)
@@ -45,4 +39,8 @@ def run_field_prediction(field_id: str, bbox: list, optical_np: np.ndarray = Non
     results = postprocess_predictions(outputs)
     results["field_id"] = field_id
     results["bbox"] = bbox
+    results["opt_tensor"] = opt_tensor
+    results["sar_tensor"] = sar_tensor
+    results["weather_tensor"] = weather_tensor
+    results["optical_np"] = optical_np
     return results

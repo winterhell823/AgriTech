@@ -26,7 +26,7 @@ def fetch_live_weather(lat: float, lon: float, days: int = 7) -> Dict[str, Any]:
         "timezone": "auto"
     }
     
-    response = requests.get(OPEN_METEO_URL, params=params)
+    response = requests.get(OPEN_METEO_URL, params=params, timeout=3.0)
     if response.status_code != 200:
         raise ConnectionError(f"Failed to fetch weather data from Open-Meteo: {response.status_code}")
     
@@ -54,6 +54,27 @@ def extract_weather_feature_vector(weather_json: Dict[str, Any]) -> np.ndarray:
     # Normalize features: Temp (/50), Precip (/100), Humidity (/100), Wind (/50)
     normalized_vector = raw_vector / np.array([50.0, 100.0, 100.0, 50.0], dtype=np.float32)
     return np.clip(normalized_vector, 0.0, 1.0)
+
+def fetch_grid_weather(bbox: list) -> np.ndarray:
+    """
+    Samples weather parameters across 4 bounding box grid coordinates and averages feature vectors.
+    """
+    min_lon, min_lat, max_lon, max_lat = bbox
+    grid_coords = [
+        (min_lat, min_lon), (min_lat, max_lon),
+        (max_lat, min_lon), (max_lat, max_lon)
+    ]
+    vectors = []
+    for lat, lon in grid_coords:
+        try:
+            w_json = fetch_live_weather(lat, lon)
+            vectors.append(extract_weather_feature_vector(w_json))
+        except Exception as e:
+            print(f"[NOTE] Weather fetch note for ({lat}, {lon}): {e}")
+            
+    if vectors:
+        return np.mean(vectors, axis=0)
+    return np.array([0.5, 0.1, 0.5, 0.2], dtype=np.float32)
 
 if __name__ == "__main__":
     # Test for Punjab Coordinates

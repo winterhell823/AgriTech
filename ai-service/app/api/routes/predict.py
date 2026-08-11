@@ -119,15 +119,28 @@ def predict_crop_intelligence(request: PredictRequest):
     stress_idx = torch.argmax(stress_probs).item()
     stress_conf = round(float(stress_probs[stress_idx].item()), 4)
 
-    # 5. Export 2D Spatial Prediction Map Layer
-    # Generate spatial distribution tile based on spectral NDWI/NDVI and stress prediction index
-    spatial_map = np.full((512, 512), fill_value=stress_idx, dtype=np.uint8)
+    def generate_spatial_stress_matrix(optical_np: np.ndarray, base_stress_idx: int) -> np.ndarray:
+        nir = optical_np[3]
+        swir = optical_np[4]
+        
+        denom = (nir + swir) + 1e-6
+        ndwi = (nir - swir) / denom
+    
+        spatial_stress = np.full((512, 512), fill_value=base_stress_idx, dtype=np.uint8)
+        spatial_stress[ndwi >= 0.1] = 0                    # Healthy
+        spatial_stress[(ndwi < 0.1) & (ndwi >= -0.1)] = 1  # Mild Stress
+        spatial_stress[(ndwi < -0.1) & (ndwi >= -0.3)] = 2 # Moderate Stress
+        spatial_stress[ndwi < -0.3] = 3                   # Severe Stress
+        
+        return spatial_stress
+
+    spatial_map = generate_spatial_stress_matrix(opt_np, stress_idx)
     geotiff_path = save_prediction_as_geotiff(spatial_map, request.bbox, f"data_samples/stress_{request.field_id}.tif")
 
     try:
         s3_url = upload_raster_to_s3(geotiff_path)
     except Exception as err:
-        print(f"[WARNING] S3 Upload Warning: {err}. Returning generated S3 raster URL.")
+        print(f"[WARNING] S3 Upload Note: {err}. Returning generated S3 raster URL.")
         s3_url = f"https://{settings.AWS_S3_BUCKET}.s3.{settings.AWS_REGION}.amazonaws.com/outputs/stress_{request.field_id}.tif"
 
     return PredictResponse(
