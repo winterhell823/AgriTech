@@ -51,7 +51,7 @@ export function AppLayout() {
         sx={{
           flexGrow: 1,
           minWidth: 0,
-          width: '100%',
+          width: { xs: '100%', md: `calc(100% - ${drawerWidth}px)` },
           maxWidth: '100%',
           pt: 9,
           px: { xs: 2, md: 4 },

@@ -5,11 +5,11 @@ import { formatDateLabel, formatDecimal, formatPercent, getPriorityColor } from 
 
 function InfoRow({ label, value }) {
   return (
-    <Stack direction="row" justifyContent="space-between" spacing={2} sx={{ py: 0.75 }}>
-      <Typography variant="body2" color="text.secondary">
+    <Stack direction="row" justifyContent="space-between" spacing={2} sx={{ py: 0.75, minWidth: 0 }}>
+      <Typography variant="body2" color="text.secondary" sx={{ minWidth: 0, overflowWrap: 'anywhere' }}>
         {label}
       </Typography>
-      <Typography variant="body2" fontWeight={600}>
+      <Typography variant="body2" fontWeight={600} sx={{ minWidth: 0, overflowWrap: 'anywhere', textAlign: 'right' }}>
         {value}
       </Typography>
     </Stack>
@@ -37,14 +37,14 @@ export function FieldDetailsPanel({ field }) {
         subtitle={`Observation ${formatDateLabel(field.observationDate)}`}
         action={<Chip label={`Priority: ${field.priority}`} sx={{ bgcolor: getPriorityColor(field.priority), color: '#fff' }} />}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
+        <Grid container spacing={2} sx={{ minWidth: 0 }}>
+          <Grid item xs={12} sm={6}>
             <InfoRow label="Crop" value={field.crop} />
             <InfoRow label="Crop Confidence" value={formatPercent(field.confidence)} />
             <InfoRow label="Phenological Stage" value={field.stage} />
             <InfoRow label="Stage Confidence" value={formatPercent(field.confidence - 0.05)} />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <InfoRow label="Moisture Stress" value={field.stress} />
             <InfoRow label="Stress Confidence" value={formatPercent(field.confidence - 0.08)} />
             <InfoRow label="Temperature" value={`${field.temperature}°C`} />

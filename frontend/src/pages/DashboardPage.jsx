@@ -47,8 +47,8 @@ export function DashboardPage() {
   return (
     <Box sx={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
       <SummaryCards summary={summary} />
-      <Grid container spacing={2} sx={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
-        <Grid item xs={12} lg={7} xl={8}>
+      <Grid container spacing={2} sx={{ width: '100%', maxWidth: '100%', minWidth: 0, boxSizing: 'border-box' }}>
+        <Grid item xs={12} lg={7} xl={8} sx={{ minWidth: 0 }}>
           <GISMap
             fields={fields}
             selectedFieldId={selectedFieldId}
@@ -68,10 +68,10 @@ export function DashboardPage() {
             selectedCrop={selectedCrop}
           />
         </Grid>
-        <Grid item xs={12} lg={5} xl={4}>
+        <Grid item xs={12} lg={5} xl={4} sx={{ minWidth: 0 }}>
           <FieldDetailsPanel field={selectedField} />
         </Grid>
-        <Grid item xs={12} md={6} xl={4}>
+        <Grid item xs={12} md={6} xl={4} sx={{ minWidth: 0 }}>
           <StressDistributionChart data={stressDistribution} />
         </Grid>
         <Grid item xs={12} md={6} xl={4}>

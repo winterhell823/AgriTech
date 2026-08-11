@@ -20,7 +20,7 @@ public class ChatServiceImpl implements ChatService {
     private final ChatRepository chatRepository;
     private final RestTemplate restTemplate;
 
-    @Value("${ai-service.base-url}")
+    @Value("${ai-service.base-url:${ai-service.url:http://localhost:8000/api/v1}}")
     private String aiServiceBaseUrl;
 
     @Override

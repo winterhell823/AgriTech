@@ -76,8 +76,8 @@ export function GISMap({ fields, selectedFieldId, onSelectField, selectedLayer, 
   };
 
   return (
-    <Paper className="gis-map-shell" sx={{ position: 'relative', height: { xs: 520, md: 720 }, overflow: 'hidden', borderRadius: 3 }}>
-      <Box sx={{ position: 'absolute', inset: 0, minHeight: 0 }}>
+    <Paper className="gis-map-shell" sx={{ position: 'relative', height: { xs: 520, md: 720 }, overflow: 'hidden', borderRadius: 3, minWidth: 0 }}>
+      <Box sx={{ position: 'absolute', inset: 0, minHeight: 0, minWidth: 0 }}>
         <MapContainer
           center={baseCenter}
           zoom={13}

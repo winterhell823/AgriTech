@@ -20,7 +20,8 @@ export async function getFieldByFieldId(id, date) {
 }
 
 export async function getHistoricalFieldDataById(id) {
-  return apiRequest(`/predictions/${id}/history`, { fallback: () => getHistoricalFieldData(id) });
+  // backend exposes predictions under /api/v1/predictions and a field-specific list
+  return apiRequest(`/v1/predictions/field/${id}`, { fallback: () => getHistoricalFieldData(id) });
 }
 
 export async function getCropDistributionData(date) {

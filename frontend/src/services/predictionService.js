@@ -8,7 +8,8 @@ export async function getPredictions(date) {
 }
 
 export async function getPredictionByFieldId(fieldId, date) {
-  return apiRequest(`/predictions/${fieldId}`, { fallback: () => getFieldById(fieldId, date) });
+  // Use backend field-specific predictions route: /api/v1/predictions/field/{fieldId}
+  return apiRequest(`/v1/predictions/field/${fieldId}`, { fallback: () => getFieldById(fieldId, date) });
 }
 
 export async function getPriorityFields(date) {
